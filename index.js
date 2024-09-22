@@ -44,6 +44,23 @@ app.post("/api/products", async (req, res) => {
   }
 });
 
+// Update a product
+app.put("/api/product/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const product = await Product.findByIdAndUpdate(id, req.body);
+
+    if (!product) {
+      return res.status(404).json({ message: "Product not found!" });
+    }
+
+    const updatedProduct = await Product.findById(id);
+    res.status(200).json(updatedProduct);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 mongoose
   .connect(
     "mongodb+srv://behnamhamidi688:Iranashkani1991@cluster0.2lhiw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
