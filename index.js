@@ -3,7 +3,11 @@ const mongoose = require("mongoose");
 const Product = require("./models/product.model");
 const app = express();
 
+// Use json
 app.use(express.json());
+
+// Use urlencoded form to post a product
+app.use(express.urlencoded({ extended: false }));
 
 app.listen(4000, () => {
   console.log("Server is running on port 4000");
