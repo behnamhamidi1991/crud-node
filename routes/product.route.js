@@ -1,6 +1,6 @@
 const express = require("express");
-const Product = require("../models/product.model");
 const router = express.Router();
+
 const {
   getProducts,
   getProduct,
@@ -15,4 +15,4 @@ router.post("/", createProduct);
 router.put("/:id", updateProduct);
 router.delete("/:id", deleteProduct);
 
-moduel.exports = router;
+module.exports = router;
